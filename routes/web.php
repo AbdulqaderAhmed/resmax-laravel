@@ -25,8 +25,9 @@ Route::controller(AdminsController::class)->group(function () {
 
 
 Route::controller(AdminsController::class)->middleware('auth')->group(function () {
+
     Route::controller(ClientsController::class)->group(function () {
-        Route::get('/', 'index');
+        Route::get('/', 'index')->middleware('noBack');
     });
 
     Route::get('/logout', 'logout')->name('logout');
